@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp(
+    title: new Text("EPA Infotech"), someText:new Text("Some Text.."),));
+}
+
+class MyApp extends StatefulWidget {
+  MyApp({this.title, this.someText});
+  final Widget title, someText;
+  @override
+  MyAppState createState() => new MyAppState();
+}
+
+class MyAppState extends State<MyApp>{
+ String firstname ="";
+    String middlename ="";
+    String lastname ="";
+    
+    @override
+  Widget build(BuildContext context){
+     
+    return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Center(child: widget.title),),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration:  InputDecoration.collapsed(hintText: "First Name"),
+                onChanged: (String text){
+                  setState(() {
+                    firstname = text;
+                  });
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration:  InputDecoration.collapsed(hintText: "Middle Name"),
+                onChanged: (String text){
+                  setState(() {
+                    middlename = text;
+                  });
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration:  InputDecoration.collapsed(hintText: "Last Name"),
+                onChanged: (String text){
+                  setState(() {
+                    lastname = text;
+                  });
+                },
+              ),
+            ),
+           new Text("\n\n\n $firstname $middlename $lastname")
+          ],
+        ),
+      )
+    );
+  }
+}
